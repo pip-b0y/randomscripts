@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#CA Renew Terra form
+#Renamed - CA-Renewal-Jamf-Pro-Primer
 #Version 1.2.1
 #Renewing the CA has a number of steps and can be cumbersome to do especially the prework of getting devices into static groups and what not. There is still work that needs to be done manually but this takes some of the burden out of the CA renewal. 
 #By Hayden Charters
@@ -344,37 +344,37 @@ PurgeStaticMobileDeviceGroup() {
 
 
 if [[ ${purge} == '1' ]];then
-	echo "[Info - TerraFormCA] Purge is active. Purging work done previously." >> $logpath
+	echo "[Info - CARenewal-JamfProPrimer] Purge is active. Purging work done previously." >> $logpath
 	PurgeAdvanceSearch
 	PurgeStaticComputerGroup
 	PurgeStaticMobileDeviceGroup
-	echo "[Info - TerraFormCA] Purge is complete closing script" >> $logpath
+	echo "[Info - CARenewal-JamfProPrimer] Purge is complete closing script" >> $logpath
 	exit 0
 else
-	echo "[Info - TerraFormCA] Purge is disabled. Running normal script" >> $logpath	
+	echo "[Info - CARenewal-JamfProPrimer] Purge is disabled. Running normal script" >> $logpath	
 	#Terra From Script
-	echo "[Info - TerraFormCA] Script starting run for CA Renewal Prep" >> $logpath
-	echo "[Info - TerraFormCA] $(date +'%Y-%m-%d %H:%M:%S') Starting to check Computer Advance Searches Now" >> $logpath
+	echo "[Info - CARenewal-JamfProPrimer] Script starting run for CA Renewal Prep" >> $logpath
+	echo "[Info - CARenewal-JamfProPrimer] $(date +'%Y-%m-%d %H:%M:%S') Starting to check Computer Advance Searches Now" >> $logpath
 	ComputerAdvanceSearchCheckMDMRN
 	ComputerAdvanceSearchCheckMDMRC
-	echo "[Info - TerraFormCA] $(date +'%Y-%m-%d %H:%M:%S') Computer Advance Search has been completed" >> $logpath
-	echo "[Info - TerraFormCA] $(date +'%Y-%m-%d %H:%M:%S') Starting to check Mobile Device Advance Searches Now" >> $logpath
+	echo "[Info - CARenewal-JamfProPrimer] $(date +'%Y-%m-%d %H:%M:%S') Computer Advance Search has been completed" >> $logpath
+	echo "[Info - CARenewal-JamfProPrimer] $(date +'%Y-%m-%d %H:%M:%S') Starting to check Mobile Device Advance Searches Now" >> $logpath
 	MobileDeviceAdvanceSearchCheckMDMRN
 	MobileDeviceAdvanceSearchCheckMDMRC
-	echo "[Info - TerraFormCA] $(date +'%Y-%m-%d %H:%M:%S') Mobile Device Advance Search has been completed" >> $logpath
-	echo "[Info - TerraFormCA] $(date +'%Y-%m-%d %H:%M:%S') Advance Searches Completed Exporting devices" >> $logpath
-	echo "[Info - TerraFormCA] $(date +'%Y-%m-%d %H:%M:%S') Breaking Down Computer devices and creating static groups" >> $logpath
+	echo "[Info - CARenewal-JamfProPrimer] $(date +'%Y-%m-%d %H:%M:%S') Mobile Device Advance Search has been completed" >> $logpath
+	echo "[Info - CARenewal-JamfProPrimer] $(date +'%Y-%m-%d %H:%M:%S') Advance Searches Completed Exporting devices" >> $logpath
+	echo "[Info - CARenewal-JamfProPrimer] $(date +'%Y-%m-%d %H:%M:%S') Breaking Down Computer devices and creating static groups" >> $logpath
 	ComputersStaticGroupPrep
 	ComputersStaticGroupCreate
-	echo "[Info - TerraFormCA] $(date +'%Y-%m-%d %H:%M:%S') Adding Computers to Static Groups" >> $logpath
+	echo "[Info - CARenewal-JamfProPrimer] $(date +'%Y-%m-%d %H:%M:%S') Adding Computers to Static Groups" >> $logpath
 	ComputersStaticGroupAdd
-	echo "[Info - TerraFormCA] $(date +'%Y-%m-%d %H:%M:%S') Static Groups created for computers. Please spot check" >> $logpath
-	echo "[Info - TerraFormCA] $(date +'%Y-%m-%d %H:%M:%S') Breaking Down Mobile Devices and creating static groups" >> $logpath
+	echo "[Info - CARenewal-JamfProPrimer] $(date +'%Y-%m-%d %H:%M:%S') Static Groups created for computers. Please spot check" >> $logpath
+	echo "[Info - CARenewal-JamfProPrimer] $(date +'%Y-%m-%d %H:%M:%S') Breaking Down Mobile Devices and creating static groups" >> $logpath
 	MobileDeviceStaticGroupPrep
 	MobileDeviceStaticGroupCreate
-	echo "[Info - TerraFormCA] $(date +'%Y-%m-%d %H:%M:%S') Adding Mobile Devices to Static Groups" >> $logpath
+	echo "[Info - CARenewal-JamfProPrimer] $(date +'%Y-%m-%d %H:%M:%S') Adding Mobile Devices to Static Groups" >> $logpath
 	MobileDeviceStaticGroupAdd
-	echo "[Info - TerraFormCA] $(date +'%Y-%m-%d %H:%M:%S') Static Groups created for Mobile Devices. Please spot check" >> $logpath
+	echo "[Info - CARenewal-JamfProPrimer] $(date +'%Y-%m-%d %H:%M:%S') Static Groups created for Mobile Devices. Please spot check" >> $logpath
 	echo "The hard work is done now. You need to go into Jamf Pro and do the following"
 	echo "1 - Go to Settings > MDM Profile Settings"
 	echo "2 - Uncheck all of the options and save this"
